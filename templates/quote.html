@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-9 news"></div>
+            <div class="col-3 border">
+            <form action="" method="post">
+                <div class="form-group">
+                <label for="size">Size</label>
+                <select id="size" class="form-control" name="size">
+                    <option value="hp" selected>HP</option>
+                    <option value="asus">ASUS</option>
+                    <option value="acer">ACER</option>
+                    <option value="lenovo">LENOVO</option>
+                </select>
+                </div>
+                <div class="form-group">
+                <label for="Quantity">Quantity</label>
+                <select id="laptop" class="form-control" name="quantity">
+                    <option value="hp" selected>HP</option>
+                    <option value="asus">ASUS</option>
+                    <option value="acer">ACER</option>
+                    <option value="lenovo">LENOVO</option>
+                </select>
+                </div>
+                <div class="form-group">
+                <label for="paper">Paper</label>
+                <select id="paper" class="form-control" name="paper">
+                    <option value="hp" selected>HP</option>
+                    <option value="asus">ASUS</option>
+                    <option value="acer">ACER</option>
+                    <option value="lenovo">LENOVO</option>
+                </select>
+                </div>
+                <div class="form-group">
+                <label for="printing">Printing</label>
+                <select id="printing" class="form-control" name="printing">
+                    <option value="hp" selected>HP</option>
+                    <option value="asus">ASUS</option>
+                    <option value="acer">ACER</option>
+                    <option value="lenovo">LENOVO</option>
+                </select>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" value="yes" name="corner" id="option1" class="custom-control-input">
+                        <label for="option1" class="custom-control-label">Rounded</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                <label for="lamination">Lamination</label>
+                <select id="lamination" class="form-control" name="lamination">
+                    <option value="hp" selected>HP</option>
+                    <option value="asus">ASUS</option>
+                    <option value="acer">ACER</option>
+                    <option value="lenovo">LENOVO</option>
+                </select>
+                </div>
+                <div class="form-group">
+                <label for="prodtime">Production Time</label>
+                <select id="prodtime" class="form-control" name="prodtime">
+                    <option value="hp" selected>HP</option>
+                    <option value="asus">ASUS</option>
+                    <option value="acer">ACER</option>
+                    <option value="lenovo">LENOVO</option>
+                </select>
+                </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-primary btn-outline-primary">Reset</button>
+            </form>
+        </div>
+        </div>
+        </div>
+        <script>
+            var url = 'https://newsapi.org/v2/top-headlines?' + 'country=in&' + 'apiKey=d15c0d5bb1684cb79e5b2e296d303d36';
+            var items = [];
+            $.ajax({
+                url: url,
+                success:function(data){
+                    $.each( data.articles, function( key, val ) {
+                        //console.log(val.title); 
+                        items.push( "<li id='" + key + "' class='list-group-item'>" + val.title + "<p class='text-primary'>"+ val.description +"</p></li>" );
+                    });
+                    var element = items.join( "" );
+                    $(".news").html("<ul class='list-group'>" + element + "</ul>");
+                }
+            });
+            
+//            $.getJSON( url, function( data ) {
+//                console.log(data.articles[0].title);
+//              var items = [];
+//              $.each( data.articles, function( key, val ) {
+//                 console.log(val.title); 
+//                items.push( "<li id='" + key + "'>" + val.title + "</li>" );
+//              });
+//
+//              $( "<ul/>", {
+//                "class": "my-new-list",
+//                html: items.join( "" )
+//              }).appendTo( ".news" );
+//            });
+            
+        </script>
+        </body>
+</html>
